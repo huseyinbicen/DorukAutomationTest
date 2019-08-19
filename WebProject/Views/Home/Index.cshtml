@@ -1,0 +1,31 @@
+﻿@model WebProject.Models.ModelDTO
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="row">
+    <div class="col-md-5">
+        <div class="card">
+            <div class="card-header">
+                Report Data
+            </div>
+            <div class="card-body ">
+                <h5 class="card-title">Report Details</h5>
+                <table class="table table-hover table-striped table-responsive text-center">
+                    @for (int column = 0; column < Model.array.GetLength(0); column++)
+                    {
+                        <tr>
+                            @for (int row = 0; row < Model.array.GetLength(1); row++)
+                            {
+                                <td>@Model.array[column, row]</td>
+                            }
+                        </tr>
+                    }
+                </table>
+                <form asp-controller="Home">
+                    <a asp-action="ExportExcel" class="btn btn-primary">Export Excel</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
